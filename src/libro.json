@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "titulo": "Cien años de soledad",
+    "autor": "Gabriel García Márquez",
+    "categoria": "Magico",
+    "stock": 10,
+    "disponible": true
+  },
+  {
+    "id": 2,
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "categoria": "Ficcion",
+    "stock": 6,
+    "disponible": true
+  },
+  {
+    "id": 3,
+    "titulo": "Orgullo y prejuicio",
+    "autor": "Jane Austen",
+    "categoria": "Romance",
+    "stock": 0,
+    "disponible": false
+  },
+  {
+    "id": 4,
+    "titulo": "El principito",
+    "autor": "Antoine de Saint-Exupéry",
+    "categoria": "Fantasia",
+    "stock": 15,
+    "disponible": true
+  }
+]
