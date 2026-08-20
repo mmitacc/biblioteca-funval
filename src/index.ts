@@ -2,6 +2,8 @@ import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import fs from 'node:fs';
 import path from 'node:path';
+import { cargarSocios } from './data/socio.js';
+import router from './routes/socios.route.js';
 
 const app = express();
 const PORT = 3000;
@@ -17,11 +19,13 @@ if (fs.existsSync(swaggerFilePath)) {
     console.log('Archivo swagger json, no encontrado');
 }
 
+app.use('/socios', router);
+
 //============ ENCENDIENDO EL SERVER ================
 app.listen(PORT, async () => {
     try {
         // console.clear();
-        // await cargarClientes();  // Cargando la data del 'inventario' desde el arranque del servidor
+        await cargarSocios();  // Cargando la data del 'Socios'
         console.log(`Sevidor corriendo en: http//localhost:${PORT}`);
     } catch (error) {
         console.log({ 'Error': error });
