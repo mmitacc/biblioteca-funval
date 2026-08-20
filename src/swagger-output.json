@@ -1,0 +1,187 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API de gestion de Biblioteca",
+    "description": "Documentacion generada automaticamente por swagger-autogen",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/libro/": {
+      "get": {
+        "tags": [
+          "Libros"
+        ],
+        "description": "Obtiene la lista de estudiantes con filtros opcionales",
+        "parameters": [
+          {
+            "name": "autor",
+            "in": "query",
+            "description": "Filtrar por Autor exacto",
+            "type": "string"
+          },
+          {
+            "name": "titulo",
+            "in": "query",
+            "description": "Filtrar por titulo (insensible a mayúsculas)",
+            "type": "string"
+          },
+          {
+            "name": "Categoria",
+            "in": "query",
+            "description": "fintrar por categoria",
+            "type": "string"
+          },
+          {
+            "name": "disponible",
+            "in": "query",
+            "description": "Disponibilidad del Libro (true o false)",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Libros"
+        ],
+        "summary": "crear un Libro nuevo",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "titulo": {
+                  "example": "any"
+                },
+                "autor": {
+                  "example": "any"
+                },
+                "categoria": {
+                  "example": "any"
+                },
+                "stock": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/libro/{id}": {
+      "get": {
+        "tags": [
+          "Libros"
+        ],
+        "description": "Obtiene la informacion de un libro buscando por si ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID del libro a buscar"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Libros"
+        ],
+        "summary": "actualizar un Libro existente",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID del libro a actualizar"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos a actualizar del estudiante",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "titulo": {
+                  "type": "string",
+                  "example": "La Llorona"
+                },
+                "autor": {
+                  "type": "string",
+                  "example": "Miguel de Cervantes"
+                },
+                "categoria": {
+                  "type": "string",
+                  "example": "Romance"
+                },
+                "stock": {
+                  "type": "number",
+                  "example": 10
+                },
+                "disponible": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Libros"
+        ],
+        "summary": "eliminar un Libro",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID del libro a eliminar"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  }
+}
