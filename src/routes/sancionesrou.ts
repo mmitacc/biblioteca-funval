@@ -1,6 +1,8 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import type { Request, Response } from 'express';
 import { table_sanciones, guardarSanciones } from '../data/sancionesda.js';
 import type { Sancion } from '../types/sancionestip.js';
+import { table_socios } from '../data/socio.js';
 
 const router = Router();
 
@@ -68,40 +70,39 @@ router.post('/', async (req: Request, res: Response) => {
 });
 
 // PUT sanciones
-router.put('/:id', async (req: Request, res: Response) => {
-  const id = Number(req.params.id);
-  const index = table_sanciones.findIndex((s) => s.id === id);
+// router.put('/:id', async (req: Request, res: Response) => {
+//   const id = Number(req.params.id);
+//   if (id < 0 || isNaN(id)) {
+//     return res.status(404).json({
+//       error: 'Not Found',
+//       mensaje: 'No se encontró la sanción a actualizar'
+//     });
+//   }
+//   const index = table_sanciones.findIndex(s => s.id === id);
+//   const currentSancion = table_sanciones[index];
+//   const { pagado } = req.body;
+//   if (!pagado) {
+//     return res.status(404).json({
+//       error: 'Not Found',
+//       mensaje: 'Pagado es un campo obligatorio'
+//     });
+//   }
 
-  if (index === -1) {
-    return res.status(404).json({
-      error: 'Not Found',
-      mensaje: 'No se encontró la sanción a actualizar'
-    });
-  }
+//   //   id: number;
+//   // socioId: number;
+//   // motivo: string;
+//   // monto: number;
+//   // pagado: boolean;
 
-  const { pagada, motivo, monto } = req.body;
+//   table_sanciones[index] = { pagado: true, ...currentSancion };
 
-  if (monto !== undefined && monto <= 0) {
-    return res.status(400).json({
-      error: 'Bad Request',
-      mensaje: 'El monto debe ser mayor a 0'
-    });
-  }
+//   await guardarSanciones();
 
-  table_sanciones[index] = {
-    ...table_sanciones[index],
-    ...(motivo !== undefined && { motivo }),
-    ...(monto !== undefined && { monto: Number(monto) }),
-    ...(pagada !== undefined && { pagado: Boolean(pagada) })
-  };
-
-  await guardarSanciones();
-
-  return res.json({
-    mensaje: 'Sanción actualizada exitosamente',
-    data: table_sanciones[index]
-  });
-});
+//   return res.json({
+//     mensaje: 'Sanción actualizada exitosamente',
+//     data: table_sanciones[index]
+//   });
+// });
 
 // DELETE sanciones
 router.delete('/:id', async (req: Request, res: Response) => {

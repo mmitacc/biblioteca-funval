@@ -7,6 +7,8 @@ const router = Router();
 
 //Get and query por 'suscripto'
 router.get('/', (req: Request, res: Response) => {
+    // #swagger.tags = ['Socios']
+    // #swagger.description = 'Endpoint para listar los socios y consultar por suscripto (true/false)'
     try {
         let socios_Filter: Socio[] = [...table_socios]
         const { suscripto } = req.query;
@@ -27,6 +29,8 @@ router.get('/', (req: Request, res: Response) => {
 
 //Get un socio por 'id'
 router.get('/:id', (req: Request, res: Response) => {
+    // #swagger.tags = ['Socios']
+    // #swagger.description = 'Endpoint para buscar a un Socio con su ID'
     try {
         const id = Number(req.params.id);
         if (isNaN(id) || id < 0 || !Number.isInteger(id)) {
@@ -45,6 +49,8 @@ router.get('/:id', (req: Request, res: Response) => {
 
 //Post un socio con todos sus datos, a excepción del 'id'
 router.post('/', (req: Request, res: Response) => {
+    // #swagger.tags = ['Socios']
+    // #swagger.description = 'Endpoint para registrar un Nuevo Socio'
     try {
         const { nombre, dni, email, suscripto } = req.body;
         // Validando que existan todos los campos requeridos
@@ -73,6 +79,8 @@ router.post('/', (req: Request, res: Response) => {
 
 // Put para actualizar un socio por 'id'
 router.put('/:id', (req: Request<{ id: string }, {}, SocioQueryPatch>, res: Response) => {
+    // #swagger.tags = ['Socios']
+    // #swagger.description = 'Endpoint para Actualizar '
     try {
         const id: number = Number(req.params.id);
         const index: number = table_socios.findIndex(s => s.id === id);

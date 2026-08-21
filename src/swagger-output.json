@@ -3,8 +3,6 @@
   "info": {
     "title": "API de gestión de alumnos",
     "description": "Documento generado automaticamente por swagger-autogen",
-    "title": "API de gestion de Biblioteca",
-    "description": "Documentacion generada automaticamente por swagger-autogen",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
@@ -13,14 +11,7 @@
     "http"
   ],
   "paths": {
-    "/socios/": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "suscripto",
-            "in": "query",
-    "/libro/": {
+    "/libros/": {
       "get": {
         "tags": [
           "Libros"
@@ -53,14 +44,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
           "default": {
             "description": ""
           }
@@ -79,16 +62,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "nombre": {
-                  "example": "any"
-                },
-                "dni": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "suscripto": {
                 "titulo": {
                   "example": "any"
                 },
@@ -106,28 +79,13 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/socios/{id}": {
-      "get": {
-        "description": "",
           "default": {
             "description": ""
           }
         }
       }
     },
-    "/libro/{id}": {
+    "/libros/{id}": {
       "get": {
         "tags": [
           "Libros"
@@ -138,18 +96,6 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
             "type": "integer",
             "description": "ID del libro a buscar"
           }
@@ -171,21 +117,12 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
             "type": "integer",
             "description": "ID del libro a actualizar"
           },
           {
             "name": "body",
             "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "email": {
-                  "example": "any"
-                },
-                "suscripto": {
-                  "example": "any"
             "description": "Datos a actualizar del estudiante",
             "required": true,
             "schema": {
@@ -216,8 +153,6 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
           "200": {
             "description": "OK"
           },
@@ -237,6 +172,138 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "type": "integer",
+            "description": "ID del libro a eliminar"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/socios/": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "suscripto",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nombre": {
+                  "example": "any"
+                },
+                "dni": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "suscripto": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/socios/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "suscripto": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
             "type": "string"
           }
         ],
@@ -249,13 +316,97 @@
           },
           "500": {
             "description": "Internal Server Error"
-            "type": "integer",
-            "description": "ID del libro a eliminar"
+          }
+        }
+      }
+    },
+    "/sanciones/": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "pagada",
+            "in": "query",
+            "type": "string"
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "socioId": {
+                  "example": "any"
+                },
+                "motivo": {
+                  "example": "any"
+                },
+                "monto": {
+                  "example": "any"
+                },
+                "pagada": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/sanciones/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
