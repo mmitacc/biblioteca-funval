@@ -5,11 +5,19 @@
     "description": "Documento generado automaticamente por swagger-autogen",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "lzrlgb5t-3000.brs.devtunnels.ms",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
+  "securityDefinitions": {
+    "BypassTunnelAlert": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-Tunnel-Skip-AntiPhishing-Threshold",
+      "description": "Escribe \"true\" para saltar el bloqueo de Dev Tunnels"
+    }
+  },
   "paths": {
     "/libros/": {
       "get": {
@@ -185,7 +193,10 @@
     },
     "/socios/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Socios"
+        ],
+        "description": "Endpoint para listar los socios y consultar por suscripto (true/false)",
         "parameters": [
           {
             "name": "suscripto",
@@ -206,7 +217,10 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Socios"
+        ],
+        "description": "Endpoint para registrar un Nuevo Socio",
         "parameters": [
           {
             "name": "body",
@@ -245,7 +259,10 @@
     },
     "/socios/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Socios"
+        ],
+        "description": "Endpoint para buscar a un Socio con su ID",
         "parameters": [
           {
             "name": "id",
@@ -267,7 +284,10 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Socios"
+        ],
+        "description": "Endpoint para Actualizar ",
         "parameters": [
           {
             "name": "id",
@@ -411,5 +431,10 @@
         }
       }
     }
-  }
+  },
+  "security": [
+    {
+      "BypassTunnelAlert": []
+    }
+  ]
 }

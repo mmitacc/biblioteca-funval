@@ -10,11 +10,15 @@ import swaggerUi from "swagger-ui-express";
 import fs from "node:fs";
 import path from "node:path";
 import { cargarSanciones } from './data/sancionesda.js';
+import cors from 'cors';
+
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   const timestamp = new Date().toLocaleTimeString();
