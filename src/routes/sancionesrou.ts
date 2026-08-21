@@ -8,6 +8,8 @@ const router = Router();
 
 // GET sancion
 router.get('/', (req: Request, res: Response) => {
+  // #swagger.tags = ['Sanciones']
+  // #swagger.description = 'Endpoint para listar todas las sanciones '
   const { pagada } = req.query;
 
   if (pagada !== undefined) {
@@ -21,6 +23,8 @@ router.get('/', (req: Request, res: Response) => {
 
 // GET sanciones
 router.get('/:id', (req: Request, res: Response) => {
+  // #swagger.tags = ['Sanciones']
+  // #swagger.description = 'Endpoint para mostrar una sancion por ID '
   const id = Number(req.params.id);
   const sancion = table_sanciones.find((s) => s.id === id);
 
@@ -36,6 +40,8 @@ router.get('/:id', (req: Request, res: Response) => {
 
 // POST sanciones
 router.post('/', async (req: Request, res: Response) => {
+  // #swagger.tags = ['Sanciones']
+  // #swagger.description = 'Endpoint para registrar una nueva Sanción '
   const { socioId, motivo, monto, pagada } = req.body;
 
   if (monto <= 0) {
@@ -106,6 +112,8 @@ router.post('/', async (req: Request, res: Response) => {
 
 // DELETE sanciones
 router.delete('/:id', async (req: Request, res: Response) => {
+  // #swagger.tags = ['Sanciones']
+  // #swagger.description = 'Endpoint para eliminar una Sanción por ID '
   const id = Number(req.params.id);
   const index = table_sanciones.findIndex((s) => s.id === id);
 

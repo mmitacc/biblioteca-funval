@@ -40,7 +40,7 @@ router.get('/:id', (req: Request, res: Response) => {
         if (!socioSearch) {
             return res.status(400).json({ error: `El Socio con el id=${id}, no existe.` });
         }
-        res.status(200).json(socioSearch);
+        res.status(200).json({ 'Socio ubicado satisfactoriamente': socioSearch });
     } catch (error) {
         const msgError = error instanceof Error ? error.message : 'Error interno desconocido';
         res.status(500).json({ error: msgError });
@@ -50,7 +50,7 @@ router.get('/:id', (req: Request, res: Response) => {
 //Post un socio con todos sus datos, a excepción del 'id'
 router.post('/', (req: Request, res: Response) => {
     // #swagger.tags = ['Socios']
-    // #swagger.description = 'Endpoint para registrar un Nuevo Socio'
+    // #swagger.description = 'Endpoint para registrar un Nuevo Socio. Todos los campos son String, excepto <suscripto> que es boolean (true/false)'
     try {
         const { nombre, dni, email, suscripto } = req.body;
         // Validando que existan todos los campos requeridos
@@ -71,7 +71,7 @@ router.post('/', (req: Request, res: Response) => {
             nombre, dni, email, suscripto
         }
         table_socios.push(newProdut);
-        res.status(201).json(newProdut);
+        res.status(201).json({ 'Socio agregado exitosamente': newProdut });
     } catch (error) {
         res.status(500).json({ error: error instanceof Error ? error.message : error });
     }
@@ -80,7 +80,7 @@ router.post('/', (req: Request, res: Response) => {
 // Put para actualizar un socio por 'id'
 router.put('/:id', (req: Request<{ id: string }, {}, SocioQueryPatch>, res: Response) => {
     // #swagger.tags = ['Socios']
-    // #swagger.description = 'Endpoint para Actualizar '
+    // #swagger.description = 'Endpoint para Actualizar solo el contacto (email) y/o membresia (suscripto), de un socio por ID'
     try {
         const id: number = Number(req.params.id);
         const index: number = table_socios.findIndex(s => s.id === id);
@@ -103,7 +103,7 @@ router.put('/:id', (req: Request<{ id: string }, {}, SocioQueryPatch>, res: Resp
             email: email !== undefined ? email : currentSocio?.email,
             suscripto: suscripto !== undefined ? suscripto : currentSocio?.suscripto
         };
-        res.status(200).json(table_socios[index]);
+        res.status(200).json({ 'Actualizacion exitosa': table_socios[index] });
     } catch (error) {
         const msgError = error instanceof Error ? error.message : 'Error interno desconocido';
         res.status(500).json({ error: msgError });
@@ -112,6 +112,8 @@ router.put('/:id', (req: Request<{ id: string }, {}, SocioQueryPatch>, res: Resp
 
 // Delete de un socio por 'id'
 router.delete('/:id', (req: Request, res: Response) => {
+    // #swagger.tags = ['Socios']
+    // #swagger.description = 'Endpoint para Eliminar a un socio por ID '
     try {
         const id: number = Number(req.params.id);
         const index: number = table_socios.findIndex(s => s.id === id);
@@ -119,7 +121,7 @@ router.delete('/:id', (req: Request, res: Response) => {
             return res.status(404).json({ error: `El estudiante con el id = ${id}, no existe.` })
         }
         const [deleteEstudiante] = table_socios.splice(index, 1);
-        res.status(200).json(deleteEstudiante);
+        res.status(200).json({ 'Socio Eliminado satisfactoriamente': deleteEstudiante });
     } catch (error) {
         const msgError = error instanceof Error ? error.message : 'Error interno desconocido';
         res.status(500).json({ error: msgError });

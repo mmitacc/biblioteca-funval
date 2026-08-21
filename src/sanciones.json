@@ -1,72 +1,16 @@
 [
-    {
-        "id": 1,
-        "socioId": 104,
-        "motivo": "Inasistencia injustificada a la asamblea ordinaria",
-        "monto": 50.00,
-        "pagado": false
-    },
-    {
-        "id": 2,
-        "socioId": 215,
-        "motivo": "Retraso en la entrega de herramientas comunitarias",
-        "monto": 25.50,
-        "pagado": true
-    },
-    {
-        "id": 3,
-        "socioId": 104,
-        "motivo": "Uso indebido de las instalaciones comunes",
-        "monto": 120.00,
-        "pagado": false
-    },
-    {
-        "id": 4,
-        "socioId": 341,
-        "motivo": "Falta de pago de las cuotas de mantenimiento (Mes: Enero)",
-        "monto": 80.00,
-        "pagado": true
-    },
-    {
-        "id": 5,
-        "socioId": 112,
-        "motivo": "Dada de alta tardía de la documentación requerida",
-        "monto": 35.00,
-        "pagado": false
-    },
-    {
-        "id": 6,
-        "socioId": 502,
-        "motivo": "Daños menores en el mobiliario del club",
-        "monto": 200.00,
-        "pagado": false
-    },
-    {
-        "id": 7,
-        "socioId": 215,
-        "motivo": "Incumplimiento del horario de silencio establecido",
-        "monto": 60.00,
-        "pagado": true
-    },
-    {
-        "id": 8,
-        "socioId": 189,
-        "motivo": "Inasistencia injustificada a la asamblea extraordinaria",
-        "monto": 50.00,
-        "pagado": true
-    },
-    {
-        "id": 9,
-        "socioId": 414,
-        "motivo": "Estacionamiento en zona reservada para emergencias",
-        "monto": 150.00,
-        "pagado": false
-    },
-    {
-        "id": 10,
-        "socioId": 303,
-        "motivo": "Falta de pago de las cuotas de mantenimiento (Mes: Febrero)",
-        "monto": 80.00,
-        "pagado": false
-    }
+  {
+    "id": 1,
+    "socioId": 1,
+    "motivo": "Rompio libro",
+    "monto": 300,
+    "pagado": true
+  },
+  {
+    "id": 2,
+    "socioId": 1,
+    "motivo": "PERDIO LIBRO",
+    "monto": 500,
+    "pagado": true
+  }
 ]

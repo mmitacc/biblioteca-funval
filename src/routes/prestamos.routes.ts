@@ -25,27 +25,10 @@ async function guardarPrestamos(prestamos: Prestamo[]) {
   await fs.writeFile(archivo, JSON.stringify(prestamos, null, 2), "utf-8");
 }
 
-/**
- * @swagger
- * /prestamos:
- *   get:
- *     summary: Lista todos los préstamos
- *     tags:
- *       - Préstamos
- *     parameters:
- *       - in: query
- *         name: devuelto
- *         required: false
- *         schema:
- *           type: boolean
- *         description: Filtra por estado de devolución
- *     responses:
- *       200:
- *         description: Lista de préstamos
- *       400:
- *         description: Valor inválido
- */
+
 router.get("/", async function (req, res) {
+  // #swagger.tags = ['Prestamos']
+  // #swagger.description = 'Endpoint para listar todos los prestamos '
   try {
     const prestamos = await leerPrestamos();
 
@@ -73,28 +56,10 @@ router.get("/", async function (req, res) {
   }
 });
 
-/**
- * @swagger
- * /prestamos/{id}:
- *   get:
- *     summary: Busca un préstamo por ID
- *     tags:
- *       - Préstamos
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *     responses:
- *       200:
- *         description: Préstamo encontrado
- *       400:
- *         description: ID inválido
- *       404:
- *         description: Préstamo no encontrado
- */
+
 router.get("/:id", async function (req, res) {
+  // #swagger.tags = ['Prestamos']
+  // #swagger.description = 'Endpoint para mostrar un prestamo por ID '
   try {
     const id = Number(req.params.id);
 
@@ -124,43 +89,10 @@ router.get("/:id", async function (req, res) {
   }
 });
 
-/**
- * @swagger
- * /prestamos:
- *   post:
- *     summary: Registra un nuevo préstamo
- *     tags:
- *       - Préstamos
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - libroId
- *               - socioId
- *               - fechaPrestamo
- *               - fechaDevolucion
- *               - devuelto
- *             properties:
- *               libroId:
- *                 type: integer
- *               socioId:
- *                 type: integer
- *               fechaPrestamo:
- *                 type: string
- *               fechaDevolucion:
- *                 type: string
- *               devuelto:
- *                 type: boolean
- *     responses:
- *       201:
- *         description: Préstamo registrado
- *       400:
- *         description: Datos inválidos
- */
+
 router.post("/", async function (req, res) {
+  // #swagger.tags = ['Prestamos']
+  // #swagger.description = 'Endpoint para registrar un Nuevo Prestamo '
   try {
     const { libroId, socioId, fechaPrestamo, fechaDevolucion, devuelto } =
       req.body;
@@ -223,39 +155,10 @@ router.post("/", async function (req, res) {
   }
 });
 
-/**
- * @swagger
- * /prestamos/{id}:
- *   put:
- *     summary: Modifica un préstamo
- *     tags:
- *       - Préstamos
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               fechaDevolucion:
- *                 type: string
- *               devuelto:
- *                 type: boolean
- *     responses:
- *       200:
- *         description: Préstamo actualizado
- *       400:
- *         description: Datos inválidos
- *       404:
- *         description: Préstamo no encontrado
- */
+
 router.put("/:id", async function (req, res) {
+  // #swagger.tags = ['Prestamos']
+  // #swagger.description = 'Endpoint para Actualizar los datos de un Prestamo por ID '
   try {
     const id = Number(req.params.id);
 
@@ -317,28 +220,10 @@ router.put("/:id", async function (req, res) {
   }
 });
 
-/**
- * @swagger
- * /prestamos/{id}:
- *   delete:
- *     summary: Elimina un préstamo
- *     tags:
- *       - Préstamos
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *     responses:
- *       200:
- *         description: Préstamo eliminado
- *       400:
- *         description: ID inválido
- *       404:
- *         description: Préstamo no encontrado
- */
+
 router.delete("/:id", async function (req, res) {
+  // #swagger.tags = ['Prestamos']
+  // #swagger.description = 'Endpoint para Eliminar el registro de un Prestamo '
   try {
     const id = Number(req.params.id);
 

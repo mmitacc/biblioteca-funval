@@ -28,9 +28,9 @@ router.get(
             description: 'Filtrar por Autor exacto',
             type: 'string'
     } */
-    /*  #swagger.parameters['Categoria'] = {
+    /*  #swagger.parameters['categoria'] = {
             in: 'query',
-            description: 'fintrar por categoria',
+            description: 'filtrar por categoria',
             type: 'string'
     } */
     /*  #swagger.parameters['disponible'] = {
