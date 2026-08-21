@@ -1,0 +1,440 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API de gestión de alumnos",
+    "description": "Documento generado automaticamente por swagger-autogen",
+    "version": "1.0.0"
+  },
+  "host": "lzrlgb5t-3000.brs.devtunnels.ms",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "BypassTunnelAlert": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-Tunnel-Skip-AntiPhishing-Threshold",
+      "description": "Escribe \"true\" para saltar el bloqueo de Dev Tunnels"
+    }
+  },
+  "paths": {
+    "/libros/": {
+      "get": {
+        "tags": [
+          "Libros"
+        ],
+        "description": "Obtiene la lista de estudiantes con filtros opcionales",
+        "parameters": [
+          {
+            "name": "autor",
+            "in": "query",
+            "description": "Filtrar por Autor exacto",
+            "type": "string"
+          },
+          {
+            "name": "titulo",
+            "in": "query",
+            "description": "Filtrar por titulo (insensible a mayúsculas)",
+            "type": "string"
+          },
+          {
+            "name": "Categoria",
+            "in": "query",
+            "description": "fintrar por categoria",
+            "type": "string"
+          },
+          {
+            "name": "disponible",
+            "in": "query",
+            "description": "Disponibilidad del Libro (true o false)",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Libros"
+        ],
+        "summary": "crear un Libro nuevo",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "titulo": {
+                  "example": "any"
+                },
+                "autor": {
+                  "example": "any"
+                },
+                "categoria": {
+                  "example": "any"
+                },
+                "stock": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/libros/{id}": {
+      "get": {
+        "tags": [
+          "Libros"
+        ],
+        "description": "Obtiene la informacion de un libro buscando por si ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID del libro a buscar"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Libros"
+        ],
+        "summary": "actualizar un Libro existente",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID del libro a actualizar"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Datos a actualizar del estudiante",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "titulo": {
+                  "type": "string",
+                  "example": "La Llorona"
+                },
+                "autor": {
+                  "type": "string",
+                  "example": "Miguel de Cervantes"
+                },
+                "categoria": {
+                  "type": "string",
+                  "example": "Romance"
+                },
+                "stock": {
+                  "type": "number",
+                  "example": 10
+                },
+                "disponible": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Libros"
+        ],
+        "summary": "eliminar un Libro",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID del libro a eliminar"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/socios/": {
+      "get": {
+        "tags": [
+          "Socios"
+        ],
+        "description": "Endpoint para listar los socios y consultar por suscripto (true/false)",
+        "parameters": [
+          {
+            "name": "suscripto",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Socios"
+        ],
+        "description": "Endpoint para registrar un Nuevo Socio",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nombre": {
+                  "example": "any"
+                },
+                "dni": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "suscripto": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/socios/{id}": {
+      "get": {
+        "tags": [
+          "Socios"
+        ],
+        "description": "Endpoint para buscar a un Socio con su ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Socios"
+        ],
+        "description": "Endpoint para Actualizar ",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "suscripto": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/sanciones/": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "pagada",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "socioId": {
+                  "example": "any"
+                },
+                "motivo": {
+                  "example": "any"
+                },
+                "monto": {
+                  "example": "any"
+                },
+                "pagada": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/sanciones/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "BypassTunnelAlert": []
+    }
+  ]
+}

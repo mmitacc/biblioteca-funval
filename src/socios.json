@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "nombre": "Carlos Mendoza",
+        "dni": "10475839",
+        "email": "carlos.mendoza@email.com",
+        "suscripto": true
+    },
+    {
+        "id": 2,
+        "nombre": "Ana María Rodríguez",
+        "dni": "23948571",
+        "email": "ana.rodriguez@email.com",
+        "suscripto": false
+    },
+    {
+        "id": 3,
+        "nombre": "Juan Pedro Gómez",
+        "dni": "45829103",
+        "email": "juan.gomez@email.com",
+        "suscripto": true
+    },
+    {
+        "id": 4,
+        "nombre": "Laura Sofía Benítez",
+        "dni": "32019485",
+        "email": "laura.benitez@email.com",
+        "suscripto": true
+    },
+    {
+        "id": 5,
+        "nombre": "Diego Alejandro López",
+        "dni": "09483721",
+        "email": "diego.lopez@email.com",
+        "suscripto": false
+    },
+    {
+        "id": 6,
+        "nombre": "Elena Beatriz Martínez",
+        "dni": "51029384",
+        "email": "elena.martinez@email.com",
+        "suscripto": true
+    },
+    {
+        "id": 7,
+        "nombre": "Javier Enrique Silva",
+        "dni": "18473920",
+        "email": "javier.silva@email.com",
+        "suscripto": false
+    },
+    {
+        "id": 8,
+        "nombre": "Gabriela Fernanda Ruiz",
+        "dni": "29384756",
+        "email": "gabriela.ruiz@email.com",
+        "suscripto": true
+    },
+    {
+        "id": 9,
+        "nombre": "Ricardo Andrés Castro",
+        "dni": "38472910",
+        "email": "ricardo.castro@email.com",
+        "suscripto": true
+    },
+    {
+        "id": 10,
+        "nombre": "Patricia Ivonne Morales",
+        "dni": "47382910",
+        "email": "patricia.morales@email.com",
+        "suscripto": false
+    }
+]
