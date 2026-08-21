@@ -1,3 +1,8 @@
+import express from "express";
+import swaggerUi from "swagger-ui-express";
+import fs from "node:fs";
+import path from "node:path";
+import prestamosRouter from "./routes/prestamos.routes";
 import { cargarSocios } from './data/socio.js';
 import routerSocios from './routes/socios.route.js';
 import routerLibros from './routes/libro.route.js';
@@ -18,13 +23,7 @@ const PORT = 3000;
 
 app.use(express.json());
 
-app.use(cors());
 
-app.use((req: Request, res: Response, next: NextFunction) => {
-  const timestamp = new Date().toLocaleTimeString();
-  console.log(`[${timestamp}] ${req.method} ${req.url}`);
-  next();
-});
 
 const swaggerFilePath = path.resolve("./src/swagger-output.json");
 if (fs.existsSync(swaggerFilePath)) {
@@ -35,6 +34,7 @@ if (fs.existsSync(swaggerFilePath)) {
   console.log("Archivo swagger json, no encontrado");
 }
 
+app.use("/prestamos", prestamosRouter);
 app.use('/libros', routerLibros);
 app.use('/socios', routerSocios);
 app.use('/sanciones', routerSanciones);
@@ -44,12 +44,10 @@ app.use('/sanciones', routerSanciones);
 app.listen(PORT, async () => {
   try {
     // console.clear();
-    await cargarSocios();  // Cargando la data del 'Socios'
-    await cargarDatosLibro(); // Cargando la data del 'Inventario'
-    await cargarSanciones(); // Cargando la data de 'Sanciones'
-    console.log(`Sevidor corriendo en: http//localhost:${PORT}`);
+    // await cargarClientes();  // Cargando la data del 'inventario' desde el arranque del servidor
+    console.log(`Sevidor corriendo en: http://localhost:${PORT}`);
   } catch (error) {
-    console.log({ 'Error': error });
+    console.log({ Error: error });
   }
-})
-
+});
+//===================================================

@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "libroId": 1,
+    "socioId": 1,
+    "fechaPrestamo": "2026-08-20",
+    "fechaDevolucion": "2026-08-27",
+    "devuelto": false
+  },
+  {
+    "id": 2,
+    "libroId": 2,
+    "socioId": 2,
+    "fechaPrestamo": "2026-08-18",
+    "fechaDevolucion": "2026-08-25",
+    "devuelto": true
+  },
+  {
+    "id": 3,
+    "libroId": 3,
+    "socioId": 1,
+    "fechaPrestamo": "2026-08-21",
+    "fechaDevolucion": "2026-08-28",
+    "devuelto": false
+  },
+  {
+    "id": 5,
+    "libroId": 4,
+    "socioId": 2,
+    "fechaPrestamo": "2026-08-20",
+    "fechaDevolucion": "2026-08-27",
+    "devuelto": false
+  },
+  {
+    "id": 6,
+    "libroId": 4,
+    "socioId": 2,
+    "fechaPrestamo": "2026-08-21",
+    "fechaDevolucion": "2026-08-27",
+    "devuelto": false
+  },
+  {
+    "id": 7,
+    "libroId": 1,
+    "socioId": 3,
+    "fechaPrestamo": "2026-08-20",
+    "fechaDevolucion": "2026-08-25",
+    "devuelto": false
+  },
+  {
+    "id": 8,
+    "libroId": 2,
+    "socioId": 3,
+    "fechaPrestamo": "2026-08-20",
+    "fechaDevolucion": "2026-08-27",
+    "devuelto": true
+  },
+  {
+    "id": 9,
+    "libroId": 2,
+    "socioId": 3,
+    "fechaPrestamo": "2026-08-20",
+    "fechaDevolucion": "2026-08-27",
+    "devuelto": true
+  }
+]
